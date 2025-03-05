@@ -51,7 +51,7 @@
 \def\neonauthor#1{\def\@neonauthor{#1}}
 \def\neontitlehead#1{\def\@neontitlehead{#1}}
 
-\neontitle{NeOnTeX}
+\neontitle{neonTeX}
 \neonsubtitle{Use \textbackslash neontitle to set the title of your document!}
 \neonauthor{The author will be displayed here!}
 \neondate{\today}
