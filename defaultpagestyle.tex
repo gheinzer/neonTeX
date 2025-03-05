@@ -1,0 +1,113 @@
+\RequirePackage[autocite = superscript, backend = bibtex, style = \documentBibliographyStyle]{biblatex}
+\RequirePackage[a4paper, vmargin={2cm}, left={\marginLeft}, right={\marginRight}, marginparwidth={\marginParWidth}, marginparsep={\marginParSep}]{geometry}
+
+\addbibresource{res/refs.bib}
+\addbibresource{res/localrefs.bib}
+
+\DeclareCiteCommand{\src}{}{}{}{}
+
+% CUSTOM COMMANDS ===================================
+\input{lib/customcommands}
+\input{lib/customenvironments}
+
+% COLOR CONSTANTS ===================================
+\definecolor{gray}{RGB}{150,150,150}
+
+% FONT SETUP ========================================
+\RequirePackage{roboto-mono}
+
+\setkomafont{pagehead}		  {\headerStyle}
+\setkomafont{pagefoot}		  {\footerStyle}
+\setkomafont{pagenumber}		{\pagemarkStyle}
+\setkomafont{captionlabel}	  {\@neonheadingfont\color{neonprimary}}
+\setkomafont{sectioning}		{\@neonheadingfont\color{neonprimary}}
+\setkomafont{title}			 {\@neonheadingfont\color{black}}
+\setkomafont{sectionentry}	  {\@neonheadingfont\color{black}}
+
+\setmainfont{OpenSans-Regular.ttf}
+
+% SYNTAX HIGHLIGHTING SETUP =========================
+% Todo remove this
+% \lstdefinestyle{defaultStyle}{
+% 	basicstyle={\robotomono},
+% 	identifierstyle={},
+% 	stringstyle={\color{neonprimary}},
+% 	keywordstyle={\bfseries\color{neonsecondary}},
+% 	commentstyle={\itshape\color{gray}},
+% 	extendedchars,
+% 	showstringspaces=false,
+% 	numberstyle={\color{gray}},
+% 	escapeinside={\%*}{*)}
+% }
+% \lstset{style=defaultStyle}
+
+% CAPTION SETUP =====================================
+\input{lib/customcaptions}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+% TIKZ AND CIRUITIKZ SETUP ==================================
+\tikzset{
+	triangleArrow/.style={-{Triangle[length=3mm,width=1mm]}}
+}
+\tikzset{
+	triangleDoubleArrow/.style={{Triangle[length=3mm,width=1mm]}-{Triangle[length=3mm,width=1mm]}}
+}
+\ctikzset{
+	resistors/scale=0.75, % smaller R
+	diodes/scale=0.75,
+	voltage shift=2.0
+}
+
+% UNIT SETUP ========================================
+\sisetup{ % Makes sure that everything is in the document font
+	detect-all,
+	mode = math,
+	% series-version-mapping / m = sans,
+	reset-text-family = true,
+	reset-text-series = true,
+	reset-text-shape = true
+	% mode = text,
+	% reset-text-family = false ,
+	% reset-text-series = false ,
+	% reset-text-shape = false
+}
+
+% TITLE PAGE SETUP ==================================
+\titlehead{\@neontitlehead}
+\title{\@neontitle}
+\subtitle{\@neonsubtitle}
+\author{\@neonauthor}
+\date{\@neondate}
+
+% HEADER AND FOOTER SETUP ===========================
+\ihead{\rectfrompagetop{\@neontopstripecolor}{\@neontopstripeheight}\@neonihead}
+\chead{\@neonchead}
+\ohead{\@neonohead}
+
+\ifoot{\rectfrompagebottom{\@neonbottomstripecolor}{\@neonbottomstripeheight}\@neonifoot}
+\cfoot{\@neoncfoot}
+\ofoot{\@neonofoot}
+
+\renewcommand\titlepagestyle{empty}
+
+% PDF METATDATA SETUP ===============================
+\hypersetup{
+	pdftitle={\@neontitle},
+	pdfsubject={\@neonsubtitle},
+	pdfauthor={\@neonauthor},
+	pdfcreator={LaTeX with NeOnTeX},
+	xetex,
+}
+
+% TABLE SETUP =======================================
+\renewcommand{\arraystretch}{1.5}
+
+% CHEMFIG SETUP =====================================
+\renewcommand*\printatom[1]{#1}
+\setcharge{extra sep = 0.2em}

@@ -1,0 +1,227 @@
+\definition
+***********
+Fügt eine Definition am rechten Seitenrand ein. Passend dazu kann der \keyword-Befehl verwendet werden.
+
+\definition{WORT}{DEFINITION}
+
+
+\keyword, alias \kw
+********
+Markiert ein Wort als Schlüsselwort. Verwendet in Verbindung mit \definition.
+
+\keyword[FARBE]{SCHLÜSSELWORT}
+
+Auflistung mit itemize
+======================
+\begin{itemize}[leftmargin=*] % Entfernt die Einrückung links
+  \item test
+  \item testtest
+\end{itemize}
+
+\kwdef
+======
+Fügt eine Schlüsselwortmarkierung mit der entsprechenden Definition.
+
+\kwdef{WORT}{DEFINITION}
+\kwdef[DEFTITLE]{WORT}{DEFINITION}
+
+\fig
+****
+Fügt eine Abbildung mit Beschriftung ein.
+
+\fig[BESCHRIFTUNG]{ABBILDUNGS-REFERENZ}{BRUCHTEIL DER SEITENBREITE}{AUSRICHTUNG (r,l)}{FLAGS (subfigure, nofloat)}{INHALT}
+
+\begin{customfig} ... \end{customfig}
+=====================================
+Siehe Beschreibung von \fig.
+
+\begin{customfig}{BESCHRIFTUNG}{LABEL}{BREITENBRUCHTEIL}{AUSRICHTUNG}{FLAGS}
+	\begin{lstlisting}[numbers=left]
+	test
+	test
+	test
+	\end{lstlisting}
+\end{customfig}
+
+\begin{adjustmargin} ... \end{adjustmargin}
+===========================================
+Stellt die Seitenränder für den Absatz so ein, dass Definitionen und Randnotizen eingefügt werden können.
+
+\begin{adjustmargin}
+  ...
+\end{adjustmargin}
+
+f(x) aufzeichnen
+================
+Zeichnet ein Diagramm einer Funktion in x auf.
+
+\begin{tikzpicture}[>=latex]
+	\begin{axis}[
+	  axis x line=center,				% Nur ein Strich links/unten
+	  axis y line=center,
+	  axis line style={triangleArrow},   % Ein Dreieckspfeil einfügen
+	  xlabel={$t$},					  % Beschriftung der X-Achse
+	  ylabel={$I_C$},					% Beschriftung der Y-Achse
+	  ticks=none,						% Kein Achsenmassstab
+	  xmin=-0.125,					   % X-Achsen-Minimum
+	  xmax=2.25,						 % X-Achsen-Maximum
+	  ymin=-1.5,						 % Y-Achsen-Minimum
+	  ymax=1.5,						  % Y-Achsen-Maximum
+	  samples=1000,					  % Anzahl berechneter Punkte
+	  smooth,							% Glättung des Funktionsverlaufs
+	  height=7cm,						% Höhe des gesamten Diagramms
+	  width=15cm]						% Breite des gesamten Diagramms
+	\addplot [
+	  mark=none,						 % Eine Markierung bei jedem berechneten Punkt
+	  domain=0:2,						% Berechnungsstart und -ende auf der X-Achse
+	  color=accentprimary,			   % Farbe der Kurve
+	  style={ultra thick}				% Dicke des Strichs
+	  ] {sin(x * 360)};				  % f(x)
+  
+	  \addplot [mark=none,domain=0:2, color=accentsecondary] {cos(x * 360)};
+
+	  \legend{Sinus in Funktion von $x$, $\sin(x) \cdot 2$, $\sin(x) \cdot 3$, $\sin(x) \cdot 4$} % Legende in der Reihenfolge der einzelnen Kurven
+	\end{axis}
+\end{tikzpicture}
+
+Vorlage:
+\begin{tikzpicture}[>=latex]
+	\begin{axis}[
+	  axis x line=center,
+	  axis y line=center,
+	  axis line style={triangleArrow},
+	  xlabel={$t$},
+	  ylabel={$I_C$},
+	  % ticks=none,
+	  xmin=0,
+	  xmax=11,
+	  ymin=0,
+	  ymax=110,
+	  samples=1000,
+	  smooth,
+	  height=7cm,
+	  width=7cm]
+	  \addplot [mark=none,domain=0:100, color=accentsecondary, style={ultra thick}] {x^2};
+
+	  \legend{Sinus in Funktion von $x$, $\sin(x) \cdot 2$, $\sin(x) \cdot 3$, $\sin(x) \cdot 4$}
+	\end{axis}
+\end{tikzpicture}
+
+\goal[]{}
+=========
+Fügt eine rechtsgebundene Zusammenfassung des Absatzes ein. Auch nützlich für Lernziele.
+
+\goal[vspace-after]{TEXT}
+
+\st
+===
+Durchgestrichener Text vom Package 'soul'.
+
+Link zu einem Teil des Dokuments
+================================
+Bei Linkziel ein Label hinzufügen:
+\label{sec:foobar}
+
+Dann einen Link mit hyperref einfügen:
+\hyperref[sec:foobar]{Baz}
+
+\sectionref{}
+=============
+Fügt ein Link im Format "Abschitt 11 FooBar" ein.
+
+\sectionref{sec:foobar} % Irgendwo im Abschnitt 11 FooBar muss ein \label{sec:foobar} sein.
+
+\src{}
+======
+Verborgene Zitierung (alternative für \cite{})
+
+Darstellung von Nukliden
+========================
+\ch{^{14}7N} (14 oben, 7 unten, N in der Mitte)
+
+Reaktionsgleichung
+==================
+\begin{reaction}
+	2 H + O <=> H_{2}O
+\end{reaction}
+
+Link mit Name
+=============
+\nameref{LABEL}
+
+Link mit Abbildungstyp
+======================
+\cref{LABEL}
+
+\todo{}
+=======
+\todo{BESCHREIBUNG}
+
+Codeblock
+=========
+\begin{lstlisting}[language=C, numbers=left]
+char test = 'c';
+\end{lstlisting}
+
+Inline-Code
+===========
+\lstinline[language=c]{DDR}
+
+Wrapfigure
+==========
+\begin{wrapfigure}{R}{0.4\textwidth}
+	\includegraphics[width=0.4\textwidth]{BILD}
+	\caption{BESCHRIFTUNG}
+	\label{image:test}
+\end{wrapfigure}
+
+Direkte Rede/Anführungs- und Schlusszeichen
+===========================================
+\say{TEXT}
+
+Correct for \FloatBarrier
+=========================
+\FloatBarrierCorrect
+
+Lernziele definieren und referenzieren
+======================================
+\goaldef{ID}{TEXT}
+\goalref{ID}				  % Mit Link kopieren
+\goalrefh{ID}				 % Ohne Text verlinken
+\goalcp{ID}				   % Ohne Link kopieren
+\goallink{ID}{TEXT}		   % Link mit eigenem Text definieren
+\goalsref{ID}				 % Link zum Abschnitt mit dem entsprechenden Lernziel.
+
+subfigure
+=========
+Hinweis: Mit [t] werden die subfigures oben ausgerichtet (top).
+
+\begin{figure}[H]
+	\begin{subfigure}[t]{0.45\textwidth}
+		\Huge
+		\centering
+		\chemfig{\charge{90=\:,180=\:,0=\.,270=\:}{Cl}}
+		\vspace{1em}
+		\caption{Lewis-Schreibweise für ein Chlor-Atom}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.45\textwidth}
+		\Huge
+		\centering
+		\chemfig{\charge{90=\|,180=\|,0=\.,270=\|}{Cl}}
+		\vspace{1em}
+		\caption{Vereinfachte Lewis-Schreibweise für ein Chlor-Atom}
+	\end{subfigure}
+\end{figure}
+
+Custom font
+===========
+
+% Example for importing the font ./res/font1.ttf
+% \newfontfamily{\font1}{font1}[
+%	 Path = res/,
+%	 Extension = .ttf
+% ]
+
+% \newcommand{\@neonheadingfontOverride}{\fontspec{font1}\bfseries}
+% \newcommand{\normalFontOverride}{font1}
