@@ -1,3 +1,4 @@
 FROM texlive/texlive:latest-full
-COPY . /opt/neontex
-RUN cp /opt/neontex/*.cls $(kpsewhich --var-value TEXMFLOCAL)
+COPY .. /opt/neontex
+RUN ln -s /opt/neontex $(kpsewhich --var-value TEXMFLOCAL)/tex/latex/neontex
+RUN texhash
