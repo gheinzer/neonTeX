@@ -34,3 +34,17 @@ jobs:
             ghcr.io/gheinzer/neontex:latest
             ghcr.io/gheinzer/neontex:${{ env.GITHUB_REF }}
             ghcr.io/gheinzer/neontex:${{ env.GITHUB_REF_NAME }}
+
+  docs:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/gheinzer/neontex:latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build docs
+        run: |
+          cd docs
+          latexmk -xelatex main.tex
