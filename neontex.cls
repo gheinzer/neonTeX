@@ -43,6 +43,7 @@
 \RequirePackage{fontspec}
 \RequirePackage{neoncommands}
 \RequirePackage{neonenvironments}
+\RequirePackage{neoncaptions}
 \RequirePackage{roboto-mono}
 
 % OPTIONS =================================================================
@@ -158,7 +159,6 @@
 % \lstset{style=defaultStyle}
 
 % CAPTION SETUP =====================================
-\input{customcaptions}
 \hypersetup{
 	colorlinks,
 	citecolor=black,
