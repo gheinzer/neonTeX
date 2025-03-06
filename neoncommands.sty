@@ -1,6 +1,6 @@
 % neonTeX sub-package, only use with the neontex document class.
 
-\newcommand{\rectfrompagetop}[2]{%
+\newcommand{\@neonrectfrompagetop}[2]{%
 		\begin{tikzpicture}[remember picture,overlay]%
 			\node at (current page.north west) {%
 				\begin{tikzpicture}[remember picture, overlay]%
@@ -10,7 +10,7 @@
 		\end{tikzpicture}%
 }%
 
-\newcommand{\rectfrompagebottom}[2]{%
+\newcommand{\@neonrectfrompagebottom}[2]{%
 		\begin{tikzpicture}[remember picture,overlay]%
 			\node at (current page.south west) {%
 				\begin{tikzpicture}[remember picture, overlay]%

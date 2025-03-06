@@ -202,11 +202,11 @@
 \date{\@neondate}
 
 % HEADER AND FOOTER SETUP ===========================
-\ihead{\rectfrompagetop{\@neontopstripecolor}{\@neontopstripeheight}\@neonihead}
+\ihead{\@neonrectfrompagetop{\@neontopstripecolor}{\@neontopstripeheight}\@neonihead}
 \chead{\@neonchead}
 \ohead{\@neonohead}
 
-\ifoot{\rectfrompagebottom{\@neonbottomstripecolor}{\@neonbottomstripeheight}\@neonifoot}
+\ifoot{\@neonrectfrompagebottom{\@neonbottomstripecolor}{\@neonbottomstripeheight}\@neonifoot}
 \cfoot{\@neoncfoot}
 \ofoot{\@neonofoot}
 
