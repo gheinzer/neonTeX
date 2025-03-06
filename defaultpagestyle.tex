@@ -1,10 +1,10 @@
-\RequirePackage[autocite = superscript, backend = bibtex, style = \documentBibliographyStyle]{biblatex}
+% TODO \RequirePackage[autocite = superscript, backend = bibtex, style = \documentBibliographyStyle]{biblatex}
 \RequirePackage[a4paper, vmargin={2cm}, left={\marginLeft}, right={\marginRight}, marginparwidth={\marginParWidth}, marginparsep={\marginParSep}]{geometry}
 
-\addbibresource{res/refs.bib}
-\addbibresource{res/localrefs.bib}
+% \addbibresource{res/refs.bib}
+% \addbibresource{res/localrefs.bib}
 
-\DeclareCiteCommand{\src}{}{}{}{}
+% \DeclareCiteCommand{\src}{}{}{}{}
 
 % CUSTOM COMMANDS ===================================
 \input{lib/customcommands}
@@ -16,15 +16,15 @@
 % FONT SETUP ========================================
 \RequirePackage{roboto-mono}
 
-\setkomafont{pagehead}		  {\headerStyle}
-\setkomafont{pagefoot}		  {\footerStyle}
-\setkomafont{pagenumber}		{\pagemarkStyle}
+\setkomafont{pagehead}		  {\@neonheaderstyle}
+\setkomafont{pagefoot}		  {\@neonfooterstyle}
+\setkomafont{pagenumber}		{\@neonpagemarkstyle}
 \setkomafont{captionlabel}	  {\@neonheadingfont\color{neonprimary}}
 \setkomafont{sectioning}		{\@neonheadingfont\color{neonprimary}}
 \setkomafont{title}			 {\@neonheadingfont\color{black}}
 \setkomafont{sectionentry}	  {\@neonheadingfont\color{black}}
 
-\setmainfont{OpenSans-Regular.ttf}
+\setmainfont{Open Sans}
 
 % SYNTAX HIGHLIGHTING SETUP =========================
 % Todo remove this
@@ -107,7 +107,3 @@
 
 % TABLE SETUP =======================================
 \renewcommand{\arraystretch}{1.5}
-
-% CHEMFIG SETUP =====================================
-\renewcommand*\printatom[1]{#1}
-\setcharge{extra sep = 0.2em}

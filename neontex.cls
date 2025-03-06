@@ -33,12 +33,12 @@
 \RequirePackage{tabularray}
 \usetikzlibrary{positioning}
 \RequirePackage{nameref}
-\RequirePackage{minted}
+% TODO \RequirePackage{minted}
 \RequirePackage[skip=0.75em]{parskip}
 \RequirePackage{wrapfig}
 \RequirePackage[section]{placeins}
 \RequirePackage{multicol}
-\RequirePackage{chemfig}
+% TODO \RequirePackage{chemfig}
 \RequirePackage{subcaption}
 \RequirePackage{fontspec}
 
@@ -93,17 +93,15 @@
 \definecolor{neontertiary}{RGB}{240,232,0}
 \definecolor{neonquarternary}{RGB}{71,103,255}
 
-% Bibliography ===============================================
-% See bibliography style at: https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
-\newcommand{\documentBibliographyStyle}	 {ieee}
-
-% Custom Fonts ===============================================
-
 % Styling =====================================================
 % Headers and Footers
-\newcommand{\footerStyle}{}
-\newcommand{\pagemarkStyle}{}
-\newcommand{\headerStyle}{\@neonheadingfont\color{neonprimary}}
+\def\neonfooterstyle#1{\def\@neonfooterstyle{#1}}
+\def\neonheaderstyle#1{\def\@neonheaderstyle{#1}}
+\def\neonpagemarkstyle#1{\def\@neonpagemarkstyle{#1}}
+
+\neonfooterstyle{\@neonheadingfont\color{neonprimary}}
+\neonpagemarkstyle{\@neonheadingfont\color{neonprimary}}
+\neonheaderstyle{\@neonheadingfont\color{neonprimary}}
 
 % Miscellaneous
 \newcommand{\keywordStyle}{\@neonheadingfont\color{neonsecondary}}
