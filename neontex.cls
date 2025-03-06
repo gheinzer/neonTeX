@@ -41,6 +41,9 @@
 % TODO \RequirePackage{chemfig}
 \RequirePackage{subcaption}
 \RequirePackage{fontspec}
+\RequirePackage{neoncommands}
+\RequirePackage{neonenvironments}
+\RequirePackage{roboto-mono}
 
 % OPTIONS =================================================================
 % #### Options for the document class ####
@@ -107,11 +110,118 @@
 \newcommand{\keywordStyle}{\@neonheadingfont\color{neonsecondary}}
 
 % Margin ======================================================
-\newcommand{\marginLeft}{2cm}
-\newcommand{\marginRight}{2cm}
-\newcommand{\marginParWidth}{3cm}
-\newcommand{\marginParSep}{-1.5cm}
+\def\neonmarginleft#1{\def\@neonmarginleft{#1}}
+\def\neonmarginright#1{\def\@neonmarginright{#1}}
+\def\neonmarginbottom#1{\def\@neonmarginbottom{#1}}
+\def\neonmargintop#1{\def\@neonmargintop{#1}}
+\def\neonmarginparwidth#1{\def\@neonmarginparwidth{#1}}
+\def\neonmarginparsep#1{\def\@neonmarginparsep{#1}}
 
-\input{defaultpagestyle}
+\neonmarginright{2cm}
+\neonmarginleft{2cm}
+\neonmargintop{2cm}
+\neonmarginbottom{2cm}
+\neonmarginparwidth{3cm}
+\neonmarginparsep{-1.5cm}
+
+% PAGE SETUP ========================================
+\RequirePackage[a4paper, vmargin={2cm}, left={\@neonmarginleft}, right={\@neonmarginright}, top={\@neonmargintop}, bottom={\@neonmarginbottom}, marginparwidth={\@neonmarginparwidth}, marginparsep={\@neonmarginparsep}]{geometry}
+
+% COLOR CONSTANTS ===================================
+\definecolor{gray}{RGB}{150,150,150}
+
+% FONT SETUP ========================================
+
+\setkomafont{pagehead}		  {\@neonheaderstyle}
+\setkomafont{pagefoot}		  {\@neonfooterstyle}
+\setkomafont{pagenumber}		{\@neonpagemarkstyle}
+\setkomafont{captionlabel}	  {\@neonheadingfont\color{neonprimary}}
+\setkomafont{sectioning}		{\@neonheadingfont\color{neonprimary}}
+\setkomafont{title}			 {\@neonheadingfont\color{black}}
+\setkomafont{sectionentry}	  {\@neonheadingfont\color{black}}
+
+\setmainfont{Open Sans}
+
+% SYNTAX HIGHLIGHTING SETUP =========================
+% Todo remove this
+% \lstdefinestyle{defaultStyle}{
+% 	basicstyle={\robotomono},
+% 	identifierstyle={},
+% 	stringstyle={\color{neonprimary}},
+% 	keywordstyle={\bfseries\color{neonsecondary}},
+% 	commentstyle={\itshape\color{gray}},
+% 	extendedchars,
+% 	showstringspaces=false,
+% 	numberstyle={\color{gray}},
+% 	escapeinside={\%*}{*)}
+% }
+% \lstset{style=defaultStyle}
+
+% CAPTION SETUP =====================================
+\input{customcaptions}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+% TIKZ AND CIRUITIKZ SETUP ==================================
+\tikzset{
+	triangleArrow/.style={-{Triangle[length=3mm,width=1mm]}}
+}
+\tikzset{
+	triangleDoubleArrow/.style={{Triangle[length=3mm,width=1mm]}-{Triangle[length=3mm,width=1mm]}}
+}
+\ctikzset{
+	resistors/scale=0.75, % smaller R
+	diodes/scale=0.75,
+	voltage shift=2.0
+}
+
+% UNIT SETUP ========================================
+\sisetup{ % Makes sure that everything is in the document font
+	detect-all,
+	mode = math,
+	% series-version-mapping / m = sans,
+	reset-text-family = true,
+	reset-text-series = true,
+	reset-text-shape = true
+	% mode = text,
+	% reset-text-family = false ,
+	% reset-text-series = false ,
+	% reset-text-shape = false
+}
+
+% TITLE PAGE SETUP ==================================
+\titlehead{\@neontitlehead}
+\title{\@neontitle}
+\subtitle{\@neonsubtitle}
+\author{\@neonauthor}
+\date{\@neondate}
+
+% HEADER AND FOOTER SETUP ===========================
+\ihead{\rectfrompagetop{\@neontopstripecolor}{\@neontopstripeheight}\@neonihead}
+\chead{\@neonchead}
+\ohead{\@neonohead}
+
+\ifoot{\rectfrompagebottom{\@neonbottomstripecolor}{\@neonbottomstripeheight}\@neonifoot}
+\cfoot{\@neoncfoot}
+\ofoot{\@neonofoot}
+
+\renewcommand\titlepagestyle{empty}
+
+% PDF METATDATA SETUP ===============================
+\hypersetup{
+	pdftitle={\@neontitle},
+	pdfsubject={\@neonsubtitle},
+	pdfauthor={\@neonauthor},
+	pdfcreator={LaTeX with NeOnTeX},
+	xetex,
+}
+
+% TABLE SETUP =======================================
+\renewcommand{\arraystretch}{1.5}
 
 \makeatother
