@@ -1,0 +1,105 @@
+\documentclass{neontex}
+\usepackage[english]{babel}
+\usepackage{lipsum}
+\usepackage{minted}
+
+% Logo command
+\newfontfamily{\chivoblack}[ExternalLocation={res/}]{chivo_black.ttf}
+\newfontfamily{\chivomedium}[ExternalLocation={res/}]{chivo_medium.ttf}
+	
+\definecolor{neonlogo1}{HTML}{D90B77}
+\definecolor{neonlogo2}{HTML}{830045}
+\newcommand{\neonTeX}{{{\chivoblack\color{neonlogo1}neon}{\chivomedium\color{neonlogo2}TeX}}}
+
+% Front page setup
+\neontitle{\neonTeX}
+\neonsubtitle{A modern plug-and-play document class for XeLaTeX}
+\neonauthor{Gabriel Heinzer}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+
+	\section{Introduction}
+
+	The main goal of this document class is not to be fast. It is also not the goal to be small. The main goal is ease-of-use, and a plug-and-play solution which improves the look of your documents immediately.
+
+	neonTeX is mainly based on KOMA-Script's \texttt{scrartcl} class, and a lot of other packages. Also note that this requires XeLaTeX to work properly.
+
+	To allow you to get an idea of the documents produced by neonTeX, this document itself is built using neonTeX. You may also want to look at the source code for an example file.
+
+	\section{Features}
+	\begin{itemize}
+		\item A single line to change your life: \texttt{\textbackslash documentclass\{neontex\}}
+		\item Modern design using the \textit{Roboto Mono} font for headings and \textit{Open Sans} for the body text.
+		\item Various custom commands to interface with neonTeX.
+		\item Some customizability, but not too much.
+		\item Out-of-the-box support for Circuitikz (pre-configured to use the right symbols, i.e. the european ones)
+	\end{itemize}
+
+	\section{Usage}
+	The following is a minimal example of a document using neonTeX:
+	\inputminted{latex}{usage.tex}
+	That is everything you need to get started with neonTeX. If you want to change the appearance of the document, please refer to the following sections for more information.
+
+	\section{Custom commands and environments}
+
+	\section{Document configuration}
+	\subsection{Metadata}
+	This is something you want to configure in every document. The following commands are available:
+
+	\begin{tabular}{ p{0.25\textwidth} p{0.25\textwidth} p{0.45\textwidth} }
+		\textbf{Command} & \textbf{Variable} & \textbf{Description} \\
+		\texttt{\textbackslash neontitle\{...\}} & \texttt{\textbackslash @neontitle} & The title of the document, displayed on the front page and in the header. \\
+		\texttt{\textbackslash neonsubtitle\{...\}} & \texttt{\textbackslash @neonsubtitle} & The subtitle of the document, displayed on the front page. \\
+		\texttt{\textbackslash neonauthor\{...\}} & \texttt{\textbackslash @neonauthor} & The author of the document, displayed on the front page. \\
+		\texttt{\textbackslash neontitlehead\{...\}} & \texttt{\textbackslash @neontitlehead} & A title head displayed at the upper-left corner of the front page. Optional (empty by default). \\
+		\texttt{\textbackslash neondate\{...\}} & \texttt{\textbackslash @neondate} & The date of the document, displayed on the front page. Optional (set to the build date by default). \\
+	\end{tabular}
+
+	Make sure to set these variables before calling \texttt{\textbackslash maketitle}.
+
+	\subsection{Headers and footers}
+	The contents of the headers and footers can be customized using the following commands:
+
+	\begin{tabular}{ p{0.25\textwidth} p{0.25\textwidth} p{0.45\textwidth} }
+		\textbf{Command} & \textbf{Variable} & \textbf{Description} \\
+		\texttt{\textbackslash neonihead\{...\}} & \texttt{\textbackslash @neonihead} & Inner header content. Set to the document title by default. \\
+		\texttt{\textbackslash neonchead\{...\}} & \texttt{\textbackslash @neonchead} & Center header content. Empty by default. \\
+		\texttt{\textbackslash neonohead\{...\}} & \texttt{\textbackslash @neonohead} & Outer header content. Set to the document date by default. \\
+		\texttt{\textbackslash neonifoot\{...\}} & \texttt{\textbackslash @neonifoot} & Inner footer content. Empty by default. \\
+		\texttt{\textbackslash neoncfoot\{...\}} & \texttt{\textbackslash @neoncfoot} & Center footer content. Set to the page number by default.. \\
+		\texttt{\textbackslash neonofoot\{...\}} & \texttt{\textbackslash @neonofoot} & Outer footer content. Empty by default. \\
+	\end{tabular}
+
+	You can also define certain style commands to change the appearance of the headers and footers:
+
+	\begin{tabular}{ p{0.4\textwidth} p{0.5\textwidth} }
+		\textbf{Command} & \textbf{Description} \\
+		\texttt{\textbackslash neonheaderstyle\{...\}} & Style commands for the page header. \\
+		\texttt{\textbackslash neonfooterstyle\{...\}} & Style commands for the page footer. \\
+		\texttt{\textbackslash neonpagemarkstyle\{...\}} & Style commands for the page number.
+	\end{tabular}
+
+	\subsection{Colors}
+
+	neonTeX makes use of the \texttt{xcolor} package to define a few colors. The following colors are defined by default:
+
+	\begin{tabular}{ l l }
+		{\color{neonprimary}\chivoblack \textbf{\texttt{neonprimary}}} \\
+		{\color{neonsecondary}\chivoblack \textbf{\texttt{neonsecondary}}} \\
+		{\color{neontertiary}\chivoblack \textbf{\texttt{neontertiary}}} \\
+		{\color{neonquarternary}\chivoblack \textbf{\texttt{neonquarternary}}} \\
+	\end{tabular}
+
+	\subsection{Page accents}
+	By default, neonTeX adds a colored stripe at the top and bottom of each page (excluding the front page). You can customize these stripes using the following commands:
+
+	\begin{tabular}{ p{0.4\textwidth} p{0.5\textwidth} }
+		\textbf{Command} & \textbf{Description} \\
+		\texttt{\textbackslash neontopstripeheight\{...\}} & The height of the top stripe. Set to 0.2cm by default. \\
+		\texttt{\textbackslash neontopstripecolor\{...\}} & The color of the top stripe. Set to \texttt{neonprimary} by default. \\
+		\texttt{\textbackslash neonbottomstripeheight\{...\}} & The height of the bottom stripe. Set to 0.2cm by default. \\
+		\texttt{\textbackslash neonbottomstripecolor\{...\}} & The color of the bottom stripe. Set to \texttt{neonprimary} by default. \\
+	\end{tabular}
+\end{document}

@@ -112,6 +112,6 @@
 \newcommand{\marginParWidth}{3cm}
 \newcommand{\marginParSep}{-1.5cm}
 
-\input{lib/defaultpagestyle}
+\input{defaultpagestyle}
 
 \makeatother

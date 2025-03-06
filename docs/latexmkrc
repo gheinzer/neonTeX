@@ -1,0 +1,7 @@
+# MINTED
+# ******
+# https://github.com/pygments/pygments/issues/2120
+# pygmentize installieren (bin/shell): apt install python3-pygments
+
+$pdflatex = 'pdflatex -shell-escape';
+$xelatex = 'xelatex -shell-escape';
