@@ -73,5 +73,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: my-artifact
-          path: path/to/artifact/world.txt
+          name: neontex_documentation.pdf
+          path: docs/main.pdf
