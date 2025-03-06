@@ -32,7 +32,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/gheinzer/neontex:latest
-            ghcr.io/gheinzer/neontex:$GITHUB_REF
+            ghcr.io/gheinzer/neontex:${{ github.ref }}
 
   docs:
     runs-on: ubuntu-latest
