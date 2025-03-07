@@ -138,3 +138,19 @@
 \newcommand{\goalsref}[1]{%
 	\sectionref{goaldef:#1}%
 }
+
+\newcommand{\neontitlepage}{
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{\fill}
+			{\@neonheadingfont\Huge\@neontitle}\\
+			\vspace{20pt}
+			{\@neonheadingfont\Large\@neonsubtitle}\\
+			\vspace*{\fill}
+			{\normalfont\Large\@neonauthor}\\
+			\vspace{20pt}
+			{\normalfont\Large\@neondate}\\
+			\vspace*{\fill}
+		\end{center}
+	\end{titlepage}
+}
