@@ -7,6 +7,7 @@
 
 % PACKAGE SETUP ====================================
 % TODO \RequirePackage{chemmacros}
+\RequirePackage{amsmath}
 \RequirePackage{xcolor}
 \RequirePackage{etoolbox}
 \RequirePackage{ifthen}
